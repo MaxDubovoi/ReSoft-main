@@ -175,6 +175,12 @@ Global elements
   right: 0;
   bottom: 0;
 }
+.company-info-slider .slide h3 {
+  font-size: 70px;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 200px 0;
+}
 .company-info-slider .slide.is-active {
   z-index: 1;
 }
