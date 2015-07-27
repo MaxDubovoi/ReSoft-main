@@ -89,6 +89,11 @@ var initCompanyInfoSlider = function () {
         width: windowWidth
     });
 
+    slides.eq(0).css({
+        height: 0
+    }).addClass('is-active');
+    slides.eq(slidesNum-1).find('h3').fadeOut(0);
+
     var slideNum = 0;
     var scrollHandler = function (e) {
         var delta = 0;
@@ -118,11 +123,15 @@ var initCompanyInfoSlider = function () {
             if (_top >= windowHeight * slideNum + +sliderHolderTop && _top <= (windowHeight * (slideNum + +1)) + +sliderHolderTop) {
 
             } else {
+                var oldNum = slideNum;
                 if (delta < 0) { //scroll to top
                     slideNum--;
                 } else if (delta > 0) { //scroll to bottom
                     slideNum++;
                 }
+                slides.eq(oldNum).find('h3').fadeOut(300, function(){
+                    slides.eq(slideNum).find('h3').fadeIn(300);
+                });
             }
         } else {
             sliderHolder.removeClass('fixed');
