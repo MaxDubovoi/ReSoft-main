@@ -1,4 +1,4 @@
-var duration = 600;
+var duration = 300;
 var body = $('html, body');
 
 var BrowserDetect = {
@@ -68,22 +68,74 @@ BrowserDetect.init();
 //
 //}
 
-var initNavigation = function() {
-    var nav = $('.navigation');
-    var navElem = $(nav.find('li'));
+var initCompanyInfoSlider = function () {
+    var sliderHolder = $('.company-info-slider-holder');
+    var slides = $(sliderHolder.find('.slide'));
 
-    navElem.click(function(){
-        var elem = $(this);
-        var elemId = elem.attr('id');
-        body.animate({
-            scrollTop: $('.' + elemId).offset().top
-        }, duration);
+    var slidesNum = $(sliderHolder.find('.slide')).length;
+
+    var headerBlockHeight = $('.header-block').height();
+    var windowHeight = $(window).height();
+    var windowWidth = $(window).width();
+
+    var sliderHolderTop = sliderHolder.offset().top;
+
+    body.css({
+        height: (windowHeight*slidesNum) + headerBlockHeight
     });
+
+    slides.css({
+        height: windowHeight,
+        width: windowWidth
+    });
+
+    var slideNum = 0;
+    var scrollHandler = function (e) {
+        var delta = 0;
+
+        if (typeof e.originalEvent.deltaY != "undefined") {
+            // regular browsers
+            delta = e.originalEvent.deltaY;
+        }
+        if (BrowserDetect.browser=='Firefox') {
+            // FF
+            delta = e.originalEvent.detail * 50;
+        }
+        if (BrowserDetect.browser=='Explorer'){
+            // IE
+            delta = -1 * e.originalEvent.wheelDelta;
+        }
+
+        var _top = $(window).scrollTop();
+
+        if (_top >= sliderHolderTop) {
+            sliderHolder.addClass('fixed');
+            slides.eq(slideNum).addClass('is-active');
+            slides.eq(slideNum).css({
+                height: _top - sliderHolderTop - (windowHeight * slideNum)
+            });
+
+            if (_top >= windowHeight * slideNum + +sliderHolderTop && _top <= (windowHeight * (slideNum + +1)) + +sliderHolderTop) {
+
+            } else {
+                if (delta < 0) { //scroll to top
+                    slideNum--;
+                } else if (delta > 0) { //scroll to bottom
+                    slideNum++;
+                }
+            }
+        } else {
+            sliderHolder.removeClass('fixed');
+        }
+
+    };
+    $(window).bind('mousewheel DOMMouseScroll', scrollHandler).bind('scroll', scrollHandler);
 
 };
 
+
 $(document).ready(function(){
-    initNavigation();
+    initCompanyInfoSlider();
 });
 
 

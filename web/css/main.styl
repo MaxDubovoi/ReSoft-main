@@ -1,6 +1,13 @@
 @import 'nib'
 
+/* VARIABLES */
+tdur        = 300ms
+transition  = all tdur
+radius      = 6px
+spriteLink  = '../img/sprite.png'
+
 /* FUNCTIONS */
+
 clearfix()
   zoom 1
   &:before,
@@ -18,48 +25,62 @@ bs-cover( type = cover)
   .no-backgroundsize &
     -ms-behavior url(backgroundsize.min.htc)
 
-icon_hover(W, H, posX, posY, toImg)
-  &:after,
+overflow-ellipsis(blockWidth)
+  text-overflow ellipsis
+  white-space nowrap
+  overflow hidden
+  max-width blockWidth
+
+multiline-overflow(lines-to-show)
+  display block
+  display -webkit-box
+  max-height @line-height*lines-to-show
+  -webkit-line-clamp lines-to-show
+  -webkit-box-orient vertical
+  overflow hidden
+  text-overflow ellipsis
+
+icon()
+  background-image none !important
+  position relative
   &:before
-    transition all 0.3s ease
-    content ''
-    width W
-    height H
-    background url(toImg) no-repeat
-  &:before
-    background-position posX posY
-    opacity 1
   &:after
-    background-position posX (posY - H)
+    content ' '
+    absolute left top
+    width 100%
+    height 100%
+    opacity 1
+    transition transition
+    .no-opacity &
+      display block
+  &:after
+    background-position 0 bottom
     opacity 0
-    .no-svg &
+    .no-opacity &
       display none
   &:hover
     &:before
       opacity 0
-      .no-svg &
+      .no-opacity &
         display none
     &:after
       opacity 1
-      .no-svg &
+      .no-opacity &
         display block
-/* VARIABLES */
-tdur        = 300ms
-transition  = all tdur
-radius      = 6px
-spriteLink  = '../img/sprite.png'
+
 html
   height 100%
 body
   font-family MinionPro-Regular,"Times New Roman",Verdana
   font-weight normal
-  background #706e6e
   margin 0
   -webkit-font-smoothing subpixel-antialiased !important
   backface-visibility hidden
-h1,h2,ul
+h1,h2,h3,h4,ul,li
   margin 0
   padding 0
+  list-style none
+
 /* =============================================================================
 Global elements
 ========================================================================== */
@@ -98,15 +119,50 @@ Global elements
   position relative
   max-width 1280px
   margin 0 auto
-.icon
-  background url(spriteLink) no-repeat center
-  width 65px
-  height 65px
-  display inline-block
-  &.tell
-    background-position 0 0
-  &.email
-    background-position 0 -65px
-  &.skype
-    background-position 0 -130px
 
+/**** ICONS ****/
+.icon
+  width 40px
+  height 40px
+  background url(sprite) no-repeat
+  display inline-block
+  &.icon-resoft-logo
+    icon()
+    &:before
+    &:after
+      background url(../images/sprite.png) no-repeat 0 -120px
+    &:after
+      background-position -40px -120px
+
+
+/**** PAGES ****/
+sliderBackgrounds = #4eb3d3, #4bc6e0,  #239e00, #ce9f00, #e27e4e, #e41b1d, #d03488
+
+for num in (0..6)
+  .slide-{num}
+    background sliderBackgrounds[num]
+
+.company-info-slider-holder
+  &.fixed
+    position fixed
+    top 0
+    left 0
+
+.company-info-slider
+  width 100%
+  height 100%
+  position relative
+  .slide
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    &.is-active
+      z-index 1
+
+.header-block
+  height 1000px
+  width 100%
+  background yellowgreen
+  border-bottom 5px solid #000000

@@ -1,0 +1,186 @@
+/* VARIABLES */
+/* FUNCTIONS */
+html {
+  height: 100%;
+}
+body {
+  font-family: MinionPro-Regular, "Times New Roman", Verdana;
+  font-weight: normal;
+  margin: 0;
+  -webkit-font-smoothing: subpixel-antialiased !important;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+h1,
+h2,
+h3,
+h4,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* =============================================================================
+Global elements
+========================================================================== */
+.none {
+  display: none !important;
+}
+.dtable {
+  display: table;
+}
+.dtcell {
+  display: table-cell;
+  vertical-align: middle;
+}
+.invisible {
+  visibility: hidden;
+  opacity: 0 !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)" !important;
+  filter: alpha(opacity=0) !important;
+}
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+.visible {
+  visibility: visible !important;
+  opacity: 1 !important;
+  -ms-filter: none !important;
+  filter: none !important;
+}
+.clear {
+  clear: both;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+  display: block;
+}
+.clearfix {
+  zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.min-width {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+/**** ICONS ****/
+.icon {
+  width: 40px;
+  height: 40px;
+  background: url("sprite") no-repeat;
+  display: inline-block;
+}
+.icon.icon-resoft-logo {
+  background-image: none !important;
+  position: relative;
+}
+.icon.icon-resoft-logo:before,
+.icon.icon-resoft-logo:after {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  transition: all 300ms;
+}
+.no-opacity .icon.icon-resoft-logo:before,
+.no-opacity .icon.icon-resoft-logo:after {
+  display: block;
+}
+.icon.icon-resoft-logo:after {
+  background-position: 0 bottom;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+.no-opacity .icon.icon-resoft-logo:after {
+  display: none;
+}
+.icon.icon-resoft-logo:hover:before {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+.no-opacity .icon.icon-resoft-logo:hover:before {
+  display: none;
+}
+.icon.icon-resoft-logo:hover:after {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+.no-opacity .icon.icon-resoft-logo:hover:after {
+  display: block;
+}
+.icon.icon-resoft-logo:before,
+.icon.icon-resoft-logo:after {
+  background: url("../images/sprite.png") no-repeat 0 -120px;
+}
+.icon.icon-resoft-logo:after {
+  background-position: -40px -120px;
+}
+/**** PAGES ****/
+.slide-0 {
+  background: #4eb3d3;
+}
+.slide-1 {
+  background: #4bc6e0;
+}
+.slide-2 {
+  background: #239e00;
+}
+.slide-3 {
+  background: #ce9f00;
+}
+.slide-4 {
+  background: #e27e4e;
+}
+.slide-5 {
+  background: #e41b1d;
+}
+.slide-6 {
+  background: #d03488;
+}
+.company-info-slider-holder.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.company-info-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.company-info-slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.company-info-slider .slide.is-active {
+  z-index: 1;
+}
+.header-block {
+  height: 1000px;
+  width: 100%;
+  background: #9acd32;
+  border-bottom: 5px solid #000;
+}
