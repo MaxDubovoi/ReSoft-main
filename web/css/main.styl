@@ -1,0 +1,112 @@
+@import 'nib'
+
+/* FUNCTIONS */
+clearfix()
+  zoom 1
+  &:before,
+  &:after
+    content ""
+    display table
+  &:after
+    clear both
+
+font-proxima()
+  font-family 'proxima_nova', sans-serif
+
+bs-cover( type = cover)
+  background-size type
+  .no-backgroundsize &
+    -ms-behavior url(backgroundsize.min.htc)
+
+icon_hover(W, H, posX, posY, toImg)
+  &:after,
+  &:before
+    transition all 0.3s ease
+    content ''
+    width W
+    height H
+    background url(toImg) no-repeat
+  &:before
+    background-position posX posY
+    opacity 1
+  &:after
+    background-position posX (posY - H)
+    opacity 0
+    .no-svg &
+      display none
+  &:hover
+    &:before
+      opacity 0
+      .no-svg &
+        display none
+    &:after
+      opacity 1
+      .no-svg &
+        display block
+/* VARIABLES */
+tdur        = 300ms
+transition  = all tdur
+radius      = 6px
+spriteLink  = '../img/sprite.png'
+html
+  height 100%
+body
+  font-family MinionPro-Regular,"Times New Roman",Verdana
+  font-weight normal
+  background #706e6e
+  margin 0
+  -webkit-font-smoothing subpixel-antialiased !important
+  backface-visibility hidden
+h1,h2,ul
+  margin 0
+  padding 0
+/* =============================================================================
+Global elements
+========================================================================== */
+.none
+  display none !important
+.dtable
+  display table
+.dtcell
+  display table-cell
+  vertical-align middle
+.invisible
+  visibility hidden
+  opacity 0 !important
+.hidden
+  display none !important
+  visibility hidden !important
+.visible
+  visibility visible !important
+  opacity 1 !important
+.clear
+  clear both
+  height 0
+  font-size 0
+  line-height 0
+  overflow hidden
+  display block
+.clearfix
+  zoom 1
+  &:before,
+  &:after
+    content ""
+    display table
+  &:after
+    clear both
+.min-width
+  position relative
+  max-width 1280px
+  margin 0 auto
+.icon
+  background url(spriteLink) no-repeat center
+  width 65px
+  height 65px
+  display inline-block
+  &.tell
+    background-position 0 0
+  &.email
+    background-position 0 -65px
+  &.skype
+    background-position 0 -130px
+
