@@ -81,18 +81,17 @@ var initCompanyInfoSlider = function () {
     var sliderHolderTop = sliderHolder.offset().top;
 
     body.css({
-        height: (windowHeight*slidesNum) + headerBlockHeight
+        height: (windowHeight*(slidesNum+1)) + headerBlockHeight
     });
 
     slides.css({
-        height: windowHeight,
+        height: 0,
         width: windowWidth
     });
 
     slides.eq(0).css({
-        height: 0
+        height: ''
     }).addClass('is-active');
-   /* slides.eq(slidesNum-1).find('h3').fadeOut(0);*/
 
     var slideNum = 0;
     var scrollHandler = function (e) {
@@ -115,7 +114,7 @@ var initCompanyInfoSlider = function () {
 
         if (_top >= sliderHolderTop) {
             sliderHolder.addClass('fixed');
-            slides.eq(slideNum).addClass('is-active');
+            slides.removeClass('is-active').eq(slideNum).addClass('is-active');
             slides.eq(slideNum).css({
                 height: _top - sliderHolderTop - (windowHeight * slideNum)
             });
@@ -123,15 +122,11 @@ var initCompanyInfoSlider = function () {
             if (_top >= windowHeight * slideNum + +sliderHolderTop && _top <= (windowHeight * (slideNum + +1)) + +sliderHolderTop) {
 
             } else {
-                //var oldNum = slideNum;
                 if (delta < 0) { //scroll to top
                     slideNum--;
                 } else if (delta > 0) { //scroll to bottom
                     slideNum++;
                 }
-               /* slides.eq(oldNum).find('h3').fadeOut(300, function(){
-                    slides.eq(slideNum).find('h3').fadeIn(300);
-                });*/
             }
         } else {
             sliderHolder.removeClass('fixed');
