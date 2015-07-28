@@ -185,9 +185,16 @@ Global elements
 .company-info-slider .slide.is-active {
   z-index: 1;
 }
+.footer-block,
 .header-block {
   height: 1000px;
   width: 100%;
   background: #9acd32;
   border-bottom: 5px solid #000;
+}
+.footer-block h2,
+.header-block h2 {
+  font-size: 80px;
+  text-align: center;
+  padding: 200px 0;
 }
