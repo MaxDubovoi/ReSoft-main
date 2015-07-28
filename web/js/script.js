@@ -101,7 +101,7 @@ var initCompanyInfoSlider = function () {
         height: ''
     }).addClass('is-active');
 
-    var slideNum = 0;
+    var activeSlideIndex = 0;
     var scrollHandler = function (e) {
         var delta = 0;
 
@@ -122,18 +122,18 @@ var initCompanyInfoSlider = function () {
 
         if (_top >= sliderHolderTop) {
             sliderHolder.addClass('fixed');
-            slides.removeClass('is-active').eq(slideNum).addClass('is-active');
-            slides.eq(slideNum).css({
-                height: _top - sliderHolderTop - (windowHeight * slideNum)
+            slides.removeClass('is-active').eq(activeSlideIndex).addClass('is-active');
+            slides.eq(activeSlideIndex).css({
+                height: _top - sliderHolderTop - (windowHeight * activeSlideIndex)
             });
 
-            if (_top >= windowHeight * slideNum + +sliderHolderTop && _top <= (windowHeight * (slideNum + +1)) + +sliderHolderTop) {
+            if (_top >= windowHeight * activeSlideIndex + +sliderHolderTop && _top <= (windowHeight * (activeSlideIndex + +1)) + +sliderHolderTop) {
 
             } else {
                 if (delta < 0) { //scroll to top
-                    slideNum--;
+                    activeSlideIndex--;
                 } else if (delta > 0) { //scroll to bottom
-                    slideNum++;
+                    activeSlideIndex++;
                 }
             }
         } else {
