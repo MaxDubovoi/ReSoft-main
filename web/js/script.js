@@ -85,6 +85,7 @@ var initCompanyInfoSlider = function () {
         height: (windowHeight*(slidesNum+1)) + headerBlockHeight
     });
 
+    //КОСТЫЛЬ
     footerBlock.css({
         top: (windowHeight*(slidesNum+1)) + headerBlockHeight,
         position: 'absolute'
@@ -138,6 +139,7 @@ var initCompanyInfoSlider = function () {
         } else {
             sliderHolder.removeClass('fixed');
         }
+        // КОСТЫЛЬ
         if (_top >= body.height() - 500)
             sliderHolder.removeClass('fixed');
 
