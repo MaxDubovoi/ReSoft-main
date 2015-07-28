@@ -89,7 +89,7 @@ var initCompanyInfoSlider = function () {
     footerBlock.css({
         top: (windowHeight*(slidesNum+1)) + headerBlockHeight,
         position: 'absolute'
-    })
+    });
 
     slides.css({
         height: 0,
