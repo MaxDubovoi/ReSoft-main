@@ -85,6 +85,7 @@ var initCompanyInfoSlider = function () {
         height: (windowHeight*(slidesNum+1)) + headerBlockHeight
     });
 
+
     //КОСТЫЛЬ
     footerBlock.css({
         top: (windowHeight*(slidesNum+1)) + headerBlockHeight,
@@ -124,6 +125,7 @@ var initCompanyInfoSlider = function () {
             sliderHolder.addClass('fixed');
             slides.removeClass('is-active').eq(activeSlideIndex).addClass('is-active');
             slides.eq(activeSlideIndex).css({
+               // height:0,
                 height: _top - sliderHolderTop - (windowHeight * activeSlideIndex)
             });
 
@@ -140,7 +142,7 @@ var initCompanyInfoSlider = function () {
             sliderHolder.removeClass('fixed');
         }
         // КОСТЫЛЬ
-        if (_top >= body.height() - 500)
+        if (_top >= body.height() )
             sliderHolder.removeClass('fixed');
 
     };
