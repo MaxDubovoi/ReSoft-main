@@ -69,6 +69,7 @@ BrowserDetect.init();
 //}
 
 var initCompanyInfoSlider = function () {
+    window.scrollTo(0, 0);
     var sliderHolder = $('.company-info-slider-holder');
     var footerBlock = $('.footer-block');
     var slides = $(sliderHolder.find('.slide'));
@@ -87,7 +88,7 @@ var initCompanyInfoSlider = function () {
 
     //КОСТЫЛЬ
     footerBlock.css({
-        top: (windowHeight*(slidesNum+1)) + headerBlockHeight,
+        top: (windowHeight*(slidesNum)) + headerBlockHeight,
         position: 'absolute'
     });
 
@@ -98,7 +99,7 @@ var initCompanyInfoSlider = function () {
 
 
     slides.eq(0).css({
-        height: ''
+        height: windowHeight
     }).addClass('is-active');
 
     var activeSlideIndex = 0;
@@ -122,9 +123,10 @@ var initCompanyInfoSlider = function () {
 
         if (_top >= sliderHolderTop) {
             sliderHolder.addClass('fixed');
-            slides.removeClass('is-active').eq(activeSlideIndex).addClass('is-active');
-            slides.eq(activeSlideIndex).css({
-                height: _top - sliderHolderTop - (windowHeight * activeSlideIndex)
+            slides.removeClass('is-active').eq(activeSlideIndex+1).addClass('is-active');
+            slides.eq(activeSlideIndex+1).css({
+
+                height: _top - sliderHolderTop - (windowHeight * activeSlideIndex+1)
             });
 
             if (_top >= windowHeight * activeSlideIndex + +sliderHolderTop && _top <= (windowHeight * (activeSlideIndex + +1)) + +sliderHolderTop) {
@@ -140,8 +142,12 @@ var initCompanyInfoSlider = function () {
             sliderHolder.removeClass('fixed');
         }
         // КОСТЫЛЬ
-        if (_top >= body.height() - 500)
+        if (_top >= body.height())
             sliderHolder.removeClass('fixed');
+        if(_top<=sliderHolderTop)
+        slides.eq(activeSlideIndex+1).css({
+            height: 0
+        });
 
     };
     $(window).bind('mousewheel DOMMouseScroll', scrollHandler).bind('scroll', scrollHandler);
