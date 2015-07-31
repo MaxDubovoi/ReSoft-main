@@ -174,7 +174,9 @@ Global elements
   left: 0;
   right: 0;
   bottom: 0;
+  height: 0;
   overflow: hidden;
+  resize: both;
 }
 .company-info-slider .slide h3 {
   font-size: 70px;

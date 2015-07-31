@@ -73,7 +73,6 @@ var windowWidth = $(window).width();
 var slides = $(sliderHolder.find('.slide'));
 
 var initCompanyInfoSlider = function () {
-    window.scrollTo(0, 0);
 
     var footerBlock = $('.footer-block');
 
@@ -125,6 +124,7 @@ var initCompanyInfoSlider = function () {
         }
 
         var _top = $(window).scrollTop();
+        windowHeight = $(window).height();
 
         if (_top >= sliderHolderTop ){
             sliderHolder.addClass('fixed');
@@ -156,6 +156,7 @@ var initCompanyInfoSlider = function () {
             height: 0
         });
         $(window).resize(function(){
+            windowHeight = $(window).height();
             slides.css({
                 width: $(window).width()
             });
@@ -167,7 +168,9 @@ var initCompanyInfoSlider = function () {
 
 };
 
-
+$(window).load(function(){
+    $('html, body').scrollTop(0);
+});
 
 $(document).ready(function(){
     initCompanyInfoSlider();
