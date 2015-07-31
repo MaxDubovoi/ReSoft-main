@@ -71,6 +71,7 @@ var sliderHolder = $('.company-info-slider-holder');
 var windowHeight = $(window).height();
 var windowWidth = $(window).width();
 var slides = $(sliderHolder.find('.slide'));
+var activeSlideIndex = 0;
 
 var initCompanyInfoSlider = function () {
 
@@ -106,7 +107,6 @@ var initCompanyInfoSlider = function () {
 
 
 
-    var activeSlideIndex = 0;
     var scrollHandler = function (e) {
         var delta = 0;
 
@@ -159,6 +159,9 @@ var initCompanyInfoSlider = function () {
             windowHeight = $(window).height();
             slides.css({
                 width: $(window).width()
+            });
+            slides.eq(activeSlideIndex+1).css({
+                height: _top - sliderHolderTop - (windowHeight * activeSlideIndex+1)
             });
         })
 
