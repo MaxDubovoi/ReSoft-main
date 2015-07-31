@@ -67,18 +67,21 @@ BrowserDetect.init();
 //if(!isMobile.any()) {
 //
 //}
+var sliderHolder = $('.company-info-slider-holder');
+var windowHeight = $(window).height();
+var windowWidth = $(window).width();
+var slides = $(sliderHolder.find('.slide'));
 
 var initCompanyInfoSlider = function () {
     window.scrollTo(0, 0);
-    var sliderHolder = $('.company-info-slider-holder');
+
     var footerBlock = $('.footer-block');
-    var slides = $(sliderHolder.find('.slide'));
+
 
     var slidesNum = $(sliderHolder.find('.slide')).length;
 
     var headerBlockHeight = $('.header-block').height();
-    var windowHeight = $(window).height();
-    var windowWidth = $(window).width();
+
 
     var sliderHolderTop = sliderHolder.offset().top;
 
@@ -102,6 +105,8 @@ var initCompanyInfoSlider = function () {
         height: windowHeight
     }).addClass('is-active');
 
+
+
     var activeSlideIndex = 0;
     var scrollHandler = function (e) {
         var delta = 0;
@@ -121,20 +126,21 @@ var initCompanyInfoSlider = function () {
 
         var _top = $(window).scrollTop();
 
-        if (_top >= sliderHolderTop) {
+        if (_top >= sliderHolderTop ){
             sliderHolder.addClass('fixed');
             slides.removeClass('is-active').eq(activeSlideIndex+1).addClass('is-active');
             slides.eq(activeSlideIndex+1).css({
 
                 height: _top - sliderHolderTop - (windowHeight * activeSlideIndex+1)
-            });
 
-            if (_top >= windowHeight * activeSlideIndex + +sliderHolderTop && _top <= (windowHeight * (activeSlideIndex + +1)) + +sliderHolderTop) {
+            });
+            console.log('active='+ +activeSlideIndex);
+           if (_top >= windowHeight * activeSlideIndex + +sliderHolderTop && _top <= (windowHeight * (activeSlideIndex + +1)) + +sliderHolderTop) {
 
             } else {
-                if (delta < 0) { //scroll to top
+                if (delta < 0&& _top<=windowHeight * activeSlideIndex + +sliderHolderTop)  { //scroll to top
                     activeSlideIndex--;
-                } else if (delta > 0) { //scroll to bottom
+                } else if (delta > 0&&_top>=windowHeight * activeSlideIndex + +sliderHolderTop ){ //scroll to bottom
                     activeSlideIndex++;
                 }
             }
@@ -146,13 +152,21 @@ var initCompanyInfoSlider = function () {
             sliderHolder.removeClass('fixed');
         if(_top<=sliderHolderTop)
         slides.eq(activeSlideIndex+1).css({
+
             height: 0
         });
+        $(window).resize(function(){
+            slides.css({
+                width: $(window).width()
+            });
+        })
+
 
     };
     $(window).bind('mousewheel DOMMouseScroll', scrollHandler).bind('scroll', scrollHandler);
 
 };
+
 
 
 $(document).ready(function(){
