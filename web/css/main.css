@@ -138,24 +138,45 @@ Global elements
 }
 /**** PAGES ****/
 .slide-0 {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
   background: #4eb3d3;
 }
 .slide-1 {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
   background: #4bc6e0;
 }
 .slide-2 {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
   background: #239e00;
 }
 .slide-3 {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
   background: #ce9f00;
 }
 .slide-4 {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
   background: #e27e4e;
 }
 .slide-5 {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
   background: #e41b1d;
 }
 .slide-6 {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
   background: #d03488;
 }
 .company-info-slider-holder.fixed {
@@ -170,13 +191,13 @@ Global elements
 }
 .company-info-slider .slide {
   position: absolute;
+  margin: 0 auto;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   height: 0;
   overflow: hidden;
-  resize: both;
 }
 .company-info-slider .slide h3 {
   font-size: 70px;
