@@ -156,9 +156,10 @@ var initCompanyInfoSlider = function () {
             height: 0
         });
         $(window).resize(function(){
-            windowHeight = $(window).height();
+           // windowHeight = $(window).height();
             slides.css({
-                width: $(window).width()
+                width: $(window).width(),
+
             });
             slides.eq(activeSlideIndex+1).css({
                 height: _top - sliderHolderTop - (windowHeight * activeSlideIndex+1)
