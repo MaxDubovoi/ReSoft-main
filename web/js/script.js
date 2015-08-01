@@ -156,13 +156,29 @@ var initCompanyInfoSlider = function () {
             height: 0
         });
         $(window).resize(function(){
-           // windowHeight = $(window).height();
+            console.log('resize')
+           windowHeight = $(window).height();
             slides.css({
-                width: $(window).width(),
-
+                width: $(window).width()
             });
             slides.eq(activeSlideIndex+1).css({
                 height: _top - sliderHolderTop - (windowHeight * activeSlideIndex+1)
+            });
+            for(var i=0;i<=activeSlideIndex;i++)
+            {
+                slides.eq(i).css({
+                    height: windowHeight
+                })
+            }
+
+
+            body.css({
+                height: (windowHeight*(slidesNum+1)) + headerBlockHeight
+            });
+            //КОСТЫЛЬ
+            footerBlock.css({
+                top: (windowHeight*(slidesNum)) + headerBlockHeight,
+                position: 'absolute'
             });
         })
 
