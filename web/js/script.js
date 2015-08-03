@@ -104,7 +104,7 @@ var initCompanyInfoSlider = function () {
     slides.eq(0).css({
         height: windowHeight
     }).addClass('is-active');
-
+    var beforeScroll=0, afterScroll;
 
 
     var scrollHandler = function (e) {
@@ -124,6 +124,7 @@ var initCompanyInfoSlider = function () {
         }
 
         var _top = $(window).scrollTop();
+        afterScroll=_top;
         windowHeight = $(window).height();
 
         if (_top >= sliderHolderTop ){
@@ -132,20 +133,26 @@ var initCompanyInfoSlider = function () {
             slides.eq(activeSlideIndex+1).css({
 
                 height: _top - sliderHolderTop - (windowHeight * activeSlideIndex+1)
-
             });
-            console.log('active='+ +activeSlideIndex);
+
            if (_top >= windowHeight * activeSlideIndex + +sliderHolderTop && _top <= (windowHeight * (activeSlideIndex + +1)) + +sliderHolderTop) {
 
+
             } else {
-                if (delta < 0&& _top<=windowHeight * activeSlideIndex + +sliderHolderTop)  { //scroll to top
+
+                if (((beforeScroll-afterScroll>0)&& (_top<=windowHeight * activeSlideIndex + +sliderHolderTop)))  { //scroll to top
                     activeSlideIndex--;
-                } else if (delta > 0&&_top>=windowHeight * activeSlideIndex + +sliderHolderTop ){ //scroll to bottom
+
+                } else if ((beforeScroll-afterScroll<0)&& (_top>=windowHeight * activeSlideIndex + +sliderHolderTop )){ //scroll to bottom
                     activeSlideIndex++;
+
                 }
             }
+
+            beforeScroll=afterScroll;
         } else {
             sliderHolder.removeClass('fixed');
+            beforeScroll=afterScroll;
         }
         // КОСТЫЛЬ
         if (_top >= body.height())
@@ -156,7 +163,7 @@ var initCompanyInfoSlider = function () {
             height: 0
         });
         $(window).resize(function(){
-            console.log('resize')
+            console.log('resize');
            windowHeight = $(window).height();
             slides.css({
                 width: $(window).width()
