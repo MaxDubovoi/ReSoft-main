@@ -4,6 +4,7 @@ html {
   height: 100%;
 }
 body {
+  position: relative;
   font-family: MinionPro-Regular, "Times New Roman", Verdana;
   font-weight: normal;
   margin: 0;
@@ -162,6 +163,10 @@ Global elements
   position: fixed;
   top: 0;
   left: 0;
+}
+.company-info-slider-holder.rel {
+  left: 0;
+  position: relative;
 }
 .company-info-slider {
   width: 100%;

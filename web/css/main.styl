@@ -71,6 +71,7 @@ icon()
 html
   height 100%
 body
+  position relative
   font-family MinionPro-Regular,"Times New Roman",Verdana
   font-weight normal
   margin 0
@@ -136,6 +137,7 @@ Global elements
 
 
 /**** PAGES ****/
+
 sliderBackgrounds = #4eb3d3, #4bc6e0, #239e00, #ce9f00, #e27e4e, #e41b1d, #d03488
 
 for num in (0..6)
@@ -146,6 +148,9 @@ for num in (0..6)
     position fixed
     top 0
     left 0
+  &.rel
+    left 0
+    position relative
 
 .company-info-slider
   width 100%

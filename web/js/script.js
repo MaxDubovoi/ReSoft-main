@@ -68,6 +68,7 @@ BrowserDetect.init();
 //
 //}
 var sliderHolder = $('.company-info-slider-holder');
+var slider = $('.company-info-slider');
 var windowHeight = $(window).height();
 var windowWidth = $(window).width();
 var slides = $(sliderHolder.find('.slide'));
@@ -86,14 +87,10 @@ var initCompanyInfoSlider = function () {
     var sliderHolderTop = sliderHolder.offset().top;
 
     body.css({
-        height: (windowHeight*(slidesNum+1)) + headerBlockHeight
+        height: (windowHeight*(slidesNum)) + headerBlockHeight + footerBlock.height()
     });
 
-    //КОСТЫЛЬ
-    footerBlock.css({
-        top: (windowHeight*(slidesNum)) + headerBlockHeight,
-        position: 'absolute'
-    });
+
 
     slides.css({
         height: 0,
@@ -155,12 +152,45 @@ var initCompanyInfoSlider = function () {
             beforeScroll=afterScroll;
         }
         // КОСТЫЛЬ
-        if (_top >= body.height())
-            sliderHolder.removeClass('fixed');
+        if (_top+windowHeight>=footerBlock.offset().top)
+        {
+            console.log('windowHeight='+windowHeight);
+            console.log('slidesNum='+slidesNum);
+            console.log('headerBlockHeight'+headerBlockHeight);
+            console.log('headerBlockHeight+windowHeight*slidesNum='+ +(headerBlockHeight+windowHeight*(slidesNum-1)));//так как нужно сместить на высоту 8-ми слайдеров
+           sliderHolder.removeClass('fixed').addClass('rel').css({
+
+               top: (headerBlockHeight+windowHeight*(slidesNum-2))
+
+            });
+        }
+        else{
+
+
+            if (_top >= sliderHolderTop ) {
+                sliderHolder.removeClass('rel').addClass('fixed').css({
+                    top:0
+                });
+                slides.removeClass('is-active').eq(activeSlideIndex+1).addClass('is-active');
+                slides.eq(activeSlideIndex+1).css({
+
+                    height: _top - sliderHolderTop - (windowHeight * activeSlideIndex+1)
+                });
+
+            }
+        }
+
+
         if(_top<=sliderHolderTop)
         slides.eq(activeSlideIndex+1).css({
 
             height: 0
+        });
+        footerBlock.css({
+            top: windowHeight*(slidesNum-1) + headerBlockHeight,
+            position: 'relative'
+
+
         });
         $(window).resize(function(){
             console.log('resize');
@@ -177,15 +207,10 @@ var initCompanyInfoSlider = function () {
                     height: windowHeight
                 })
             }
-
-
-            body.css({
-                height: (windowHeight*(slidesNum+1)) + headerBlockHeight
-            });
             //КОСТЫЛЬ
             footerBlock.css({
-                top: (windowHeight*(slidesNum)) + headerBlockHeight,
-                position: 'absolute'
+                top: windowHeight*(slidesNum-1) + headerBlockHeight,
+                position: 'relative'
             });
         })
 
