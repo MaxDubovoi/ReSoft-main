@@ -82,6 +82,9 @@ h1,h2,h3,h4,ul,li
   padding 0
   list-style none
 
+a
+  text-decoration none
+
 /* =============================================================================
 Global elements
 ========================================================================== */
@@ -119,6 +122,7 @@ Global elements
 .min-width
   position relative
   max-width 1280px
+  min-width 1280px
   margin 0 auto
 
 /**** ICONS ****/
@@ -127,6 +131,7 @@ Global elements
   height 40px
   background url(sprite) no-repeat
   display inline-block
+  margin 8px 0 0 50px
   &.icon-resoft-logo
     icon()
     &:before
@@ -134,15 +139,38 @@ Global elements
       background url(../images/sprite.png) no-repeat 0 -120px
     &:after
       background-position -40px -120px
+.icon-logo-big
+  position relative
+  width 95px
+  height 95px
+  float left
+  background-image url("../images/sprite.png")
+  background-position -13px -13px
+  margin 58px 0 0 52px
+  &:hover
+    background-position -131px -13px
+  span
+    display inline-block
+    width 95px
+    text-align center
+    margin-top 95px
+    font-family "Maxwell-bold","Times New Roman", sans-serif
+    font-size 38px
+    color #ffffff
+
+
+
+
 
 
 /**** PAGES ****/
+/**** SLIDER TEST ****/
 
 sliderBackgrounds = #4eb3d3, #4bc6e0, #239e00, #ce9f00, #e27e4e, #e41b1d, #d03488
 
 for num in (0..6)
-  .slide-{num}
-    background sliderBackgrounds[num]
+ /* .slide-{num}
+    background sliderBackgrounds[num]*/
 .company-info-slider-holder
   &.fixed
     position fixed
@@ -183,3 +211,47 @@ for num in (0..6)
     font-size 80px
     text-align center
     padding 200px 0
+/**** INDEX ****/
+.header
+  z-index 6
+  position fixed
+  height 58px
+  width 100%
+  background url("../images/header-bg.png")
+.navigation
+  clearfix()
+  float right
+  position relative
+  margin 0 40px 0 0
+
+
+  li
+    float left
+    margin 16px 0 0 40px
+  a
+    font-family 'Reef-bold', sans-serif
+    font-size 28px
+    color #ffffff
+    line-height :28px
+    transition 0.3s
+    &:hover
+      color #f1635a
+      transition 0.3s
+.bg-picture
+  z-index 1
+  position absolute
+  top 0
+  left 0
+  min-height 550px
+  width 100%
+  min-width 1280px
+
+  background  url("../images/bg-image.jpg") no-repeat center center
+  height:641px;
+  background-size:cover;
+
+
+
+
+
+
