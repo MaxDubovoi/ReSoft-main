@@ -77,6 +77,7 @@ Global elements
 }
 .min-width {
   position: relative;
+  height: 100%;
   max-width: 1280px;
   min-width: 1280px;
   margin: 0 auto;
@@ -167,28 +168,43 @@ Global elements
   font-size: 38px;
   color: #fff;
 }
+.icon-post {
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+  width: 130px;
+  height: 130px;
+  background-image: url("../images/sprite.png");
+  background-position: -253px -16px;
+}
 /**** PAGES ****/
 /**** SLIDER TEST ****/
 .slide-0 {
-  background: #4eb3d3;
+  background: #d96445;
 }
 .slide-1 {
-  background: #4bc6e0;
+  background: #da4673;
 }
 .slide-2 {
-  background: #239e00;
+  background: #f68b51;
 }
 .slide-3 {
-  background: #ce9f00;
+  background: #2eaf78;
 }
 .slide-4 {
-  background: #e27e4e;
+  background: #019992;
 }
 .slide-5 {
-  background: #e41b1d;
+  background: #edcb39;
 }
 .slide-6 {
-  background: #d03488;
+  background: #54b957;
+}
+.slide-7 {
+  background: #3a383e;
+}
+.slide-8 {
+  background: #fff;
 }
 .company-info-slider-holder.fixed {
   position: fixed;
@@ -218,7 +234,7 @@ Global elements
   font-size: 70px;
   font-family: sans-serif;
   text-align: center;
-  padding: 200px 0;
+  padding: 0;
 }
 .company-info-slider .slide.is-active {
   z-index: 1;
@@ -284,4 +300,27 @@ Global elements
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
+}
+.post {
+  position: relative;
+  float: left;
+  width: 184px;
+  top: 189px;
+  left: 267px;
+}
+.post p {
+  font-family: 'Reef-bold', sans-serif;
+  font-size: 23px;
+  color: #fff;
+  text-align: center;
+}
+.or {
+  display: inline-block;
+  position: relative;
+  top: 190px;
+  left: 470px;
+  float: left;
+  font-family: "Reef-bold", sans-serif;
+  font-size: 23px;
+  color: #fff;
 }

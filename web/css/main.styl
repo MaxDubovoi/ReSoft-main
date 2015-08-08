@@ -121,6 +121,7 @@ Global elements
     clear both
 .min-width
   position relative
+  height 100%
   max-width 1280px
   min-width 1280px
   margin 0 auto
@@ -162,18 +163,21 @@ Global elements
     font-family "Maxwell-bold","Times New Roman", sans-serif
     font-size 38px
     color #ffffff
-
-
-
-
-
+.icon-post
+  display inline-block
+  margin 0 auto
+  position relative
+  width 130px
+  height 130px
+  background-image url("../images/sprite.png")
+  background-position -253px -16px
 
 /**** PAGES ****/
 /**** SLIDER TEST ****/
 
-sliderBackgrounds = #4eb3d3, #4bc6e0, #239e00, #ce9f00, #e27e4e, #e41b1d, #d03488
+sliderBackgrounds = #d96445, #da4673, #f68b51, #2eaf78, #019992, #edcb39, #54b957,#3a383e,#ffffff
 
-for num in (0..6)
+for num in (0..8)
   .slide-{num}
     background sliderBackgrounds[num]
 .company-info-slider-holder
@@ -202,7 +206,7 @@ for num in (0..6)
       font-size 70px
       font-family sans-serif
       text-align center
-      padding 200px 0
+      padding 0
     &.is-active
       z-index 1
 
@@ -254,6 +258,28 @@ for num in (0..6)
   min-height 641px
   max-height 641px
   background-size cover
+.post
+  position relative
+  float left
+  width 184px
+  top 189px
+  left 267px
+  p
+    font-family 'Reef-bold', sans-serif
+    font-size 23px
+    color #ffffff
+    text-align center
+.or
+  display inline-block
+  position relative
+  top 190px
+  left 470px
+  float left
+  font-family "Reef-bold",sans-serif;
+  font-size 23px;
+  color #FFF;
+
+
 
 
 
