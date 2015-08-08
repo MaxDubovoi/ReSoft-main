@@ -133,12 +133,17 @@ Global elements
   display inline-block
   margin 8px 0 0 50px
   &.icon-resoft-logo
+    visibility hidden
+
+
     icon()
     &:before
     &:after
       background url(../images/sprite.png) no-repeat 0 -120px
     &:after
       background-position -40px -120px
+    &:visible
+      visibility visible
 .icon-logo-big
   position relative
   width 95px
@@ -169,8 +174,8 @@ Global elements
 sliderBackgrounds = #4eb3d3, #4bc6e0, #239e00, #ce9f00, #e27e4e, #e41b1d, #d03488
 
 for num in (0..6)
- /* .slide-{num}
-    background sliderBackgrounds[num]*/
+  .slide-{num}
+    background sliderBackgrounds[num]
 .company-info-slider-holder
   &.fixed
     position fixed
@@ -202,17 +207,16 @@ for num in (0..6)
       z-index 1
 
 .footer-block
-.header-block
   height 1000px
   width 100%
   background yellowgreen
   border-bottom 5px solid #000000
-  h2
+  /*h2
     font-size 80px
     text-align center
-    padding 200px 0
+    padding 200px 0*/
 /**** INDEX ****/
-.header
+.header-block
   z-index 6
   position fixed
   height 58px
@@ -239,16 +243,17 @@ for num in (0..6)
       transition 0.3s
 .bg-picture
   z-index 1
-  position absolute
+  position relative
   top 0
   left 0
-  min-height 550px
   width 100%
   min-width 1280px
 
   background  url("../images/bg-image.jpg") no-repeat center center
-  height:641px;
-  background-size:cover;
+  height 641px
+  min-height 641px
+  max-height 641px
+  background-size cover
 
 
 

@@ -90,6 +90,7 @@ Global elements
   margin: 8px 0 0 50px;
 }
 .icon.icon-resoft-logo {
+  visibility: hidden;
   background-image: none !important;
   position: relative;
 }
@@ -142,6 +143,9 @@ Global elements
 .icon.icon-resoft-logo:after {
   background-position: -40px -120px;
 }
+.icon.icon-resoft-logo:visible {
+  visibility: visible;
+}
 .icon-logo-big {
   position: relative;
   width: 95px;
@@ -165,20 +169,27 @@ Global elements
 }
 /**** PAGES ****/
 /**** SLIDER TEST ****/
-/* .slide-{num}
-    background sliderBackgrounds[num]*/
-/* .slide-{num}
-    background sliderBackgrounds[num]*/
-/* .slide-{num}
-    background sliderBackgrounds[num]*/
-/* .slide-{num}
-    background sliderBackgrounds[num]*/
-/* .slide-{num}
-    background sliderBackgrounds[num]*/
-/* .slide-{num}
-    background sliderBackgrounds[num]*/
-/* .slide-{num}
-    background sliderBackgrounds[num]*/
+.slide-0 {
+  background: #4eb3d3;
+}
+.slide-1 {
+  background: #4bc6e0;
+}
+.slide-2 {
+  background: #239e00;
+}
+.slide-3 {
+  background: #ce9f00;
+}
+.slide-4 {
+  background: #e27e4e;
+}
+.slide-5 {
+  background: #e41b1d;
+}
+.slide-6 {
+  background: #d03488;
+}
 .company-info-slider-holder.fixed {
   position: fixed;
   top: 0;
@@ -212,21 +223,18 @@ Global elements
 .company-info-slider .slide.is-active {
   z-index: 1;
 }
-.footer-block,
-.header-block {
+.footer-block {
   height: 1000px;
   width: 100%;
   background: #9acd32;
   border-bottom: 5px solid #000;
-}
-.footer-block h2,
-.header-block h2 {
-  font-size: 80px;
-  text-align: center;
-  padding: 200px 0;
+/*h2
+    font-size 80px
+    text-align center
+    padding 200px 0*/
 }
 /**** INDEX ****/
-.header {
+.header-block {
   z-index: 6;
   position: fixed;
   height: 58px;
@@ -264,14 +272,15 @@ Global elements
 }
 .bg-picture {
   z-index: 1;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
-  min-height: 550px;
   width: 100%;
   min-width: 1280px;
   background: url("../images/bg-image.jpg") no-repeat center center;
   height: 641px;
+  min-height: 641px;
+  max-height: 641px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;

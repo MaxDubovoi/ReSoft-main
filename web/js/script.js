@@ -68,6 +68,7 @@ BrowserDetect.init();
 //
 //}
 var sliderHolder = $('.company-info-slider-holder');
+var iconLogo=$('.icon-resoft-logo');
 var slider = $('.company-info-slider');
 var windowHeight = $(window).height();
 var windowWidth = $(window).width();
@@ -81,7 +82,8 @@ var initCompanyInfoSlider = function () {
 
     var slidesNum = $(sliderHolder.find('.slide')).length;
 
-    var headerBlockHeight = $('.header-block').height();
+    var headerBlockHeight = $('.bg-picture').height();
+    console.log(headerBlockHeight);
 
 
     var sliderHolderTop = sliderHolder.offset().top;
@@ -102,6 +104,12 @@ var initCompanyInfoSlider = function () {
         height: windowHeight
     }).addClass('is-active');
     var beforeScroll=0, afterScroll;
+    footerBlock.css({
+        top: windowHeight*(slidesNum-1) + headerBlockHeight,
+        position: 'relative'
+
+
+    });
 
 
     var scrollHandler = function (e) {
@@ -123,24 +131,28 @@ var initCompanyInfoSlider = function () {
         var _top = $(window).scrollTop();
         afterScroll=_top;
         windowHeight = $(window).height();
+        body.css({
+            height: (windowHeight*(slidesNum)) + headerBlockHeight + footerBlock.height()
+        });
 
-        if (_top >= sliderHolderTop ){
+        if (_top >= headerBlockHeight ){
+            iconLogo.addClass('visible');
+
             sliderHolder.addClass('fixed');
             slides.removeClass('is-active').eq(activeSlideIndex+1).addClass('is-active');
             slides.eq(activeSlideIndex+1).css({
 
-                height: _top - sliderHolderTop - (windowHeight * activeSlideIndex+1)
+                height: _top - headerBlockHeight - (windowHeight * activeSlideIndex+1)
             });
 
-           if (_top >= windowHeight * activeSlideIndex + +sliderHolderTop && _top <= (windowHeight * (activeSlideIndex + +1)) + +sliderHolderTop) {
+           if (_top >= windowHeight * activeSlideIndex + +headerBlockHeight && _top <= (windowHeight * (activeSlideIndex + +1)) + +headerBlockHeight) {
 
 
             } else {
-
-                if (((beforeScroll-afterScroll>0)&& (_top<=windowHeight * activeSlideIndex + +sliderHolderTop)))  { //scroll to top
+                if (((beforeScroll-afterScroll>0)&& (_top<=windowHeight * activeSlideIndex + +headerBlockHeight)))  { //scroll to top
                     activeSlideIndex--;
 
-                } else if ((beforeScroll-afterScroll<0)&& (_top>=windowHeight * activeSlideIndex + +sliderHolderTop )){ //scroll to bottom
+                } else if ((beforeScroll-afterScroll<0)&& (_top>=windowHeight * activeSlideIndex + +headerBlockHeight )){ //scroll to bottom
                     activeSlideIndex++;
 
                 }
@@ -148,16 +160,18 @@ var initCompanyInfoSlider = function () {
 
             beforeScroll=afterScroll;
         } else {
+            iconLogo.removeClass('visible');
             sliderHolder.removeClass('fixed');
             beforeScroll=afterScroll;
         }
         // КОСТЫЛЬ
         if (_top+windowHeight>=footerBlock.offset().top)
         {
-            console.log('windowHeight='+windowHeight);
-            console.log('slidesNum='+slidesNum);
+            /*console.log('windowHeight='+windowHeight);
+            console.log('footerBlock.offset().top'+footerBlock.offset().top);
             console.log('headerBlockHeight'+headerBlockHeight);
-            console.log('headerBlockHeight+windowHeight*slidesNum='+ +(headerBlockHeight+windowHeight*(slidesNum-1)));//так как нужно сместить на высоту 8-ми слайдеров
+            console.log('_top+windowHeight'+ +(_top+windowHeight));//так как нужно сместить на высоту 8-ми слайдеров
+            */
            sliderHolder.removeClass('fixed').addClass('rel').css({
 
                top: (headerBlockHeight+windowHeight*(slidesNum-2))
@@ -167,21 +181,21 @@ var initCompanyInfoSlider = function () {
         else{
 
 
-            if (_top >= sliderHolderTop ) {
+            if (_top >= headerBlockHeight ) {
                 sliderHolder.removeClass('rel').addClass('fixed').css({
                     top:0
                 });
                 slides.removeClass('is-active').eq(activeSlideIndex+1).addClass('is-active');
                 slides.eq(activeSlideIndex+1).css({
 
-                    height: _top - sliderHolderTop - (windowHeight * activeSlideIndex+1)
+                    height: _top - headerBlockHeight - (windowHeight * activeSlideIndex+1)
                 });
 
             }
         }
 
 
-        if(_top<=sliderHolderTop)
+        if(_top<=headerBlockHeight)
         slides.eq(activeSlideIndex+1).css({
 
             height: 0
@@ -194,12 +208,20 @@ var initCompanyInfoSlider = function () {
         });
         $(window).resize(function(){
             console.log('resize');
+            headerBlockHeight = $('.bg-picture').height();
+
+            sliderHolderTop = sliderHolder.offset().top;
+            console.log('headerBlockHeight='+headerBlockHeight);
+
+            body.css({
+                height: (windowHeight*(slidesNum)) + headerBlockHeight + footerBlock.height()
+            });
            windowHeight = $(window).height();
             slides.css({
                 width: $(window).width()
             });
             slides.eq(activeSlideIndex+1).css({
-                height: _top - sliderHolderTop - (windowHeight * activeSlideIndex+1)
+                height: _top - headerBlockHeight - (windowHeight * activeSlideIndex+1)
             });
             for(var i=0;i<=activeSlideIndex;i++)
             {
