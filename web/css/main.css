@@ -234,6 +234,24 @@ Global elements
   height: 110px;
   background-position: -660px -445px;
 }
+.slides-icons.icon-slide-5 {
+  margin: 40px auto 0 auto;
+  width: 142px;
+  height: 199px;
+  background-position: -415px -592px;
+}
+.slides-icons.icon-slide-6 {
+  margin: 38px auto 0 auto;
+  width: 236px;
+  height: 198px;
+  background-position: 0 -602px;
+}
+.slides-icons.icon-slide-7 {
+  margin: 38px auto 0 auto;
+  width: 142px;
+  height: 140px;
+  background-position: -646px -570px;
+}
 /**** PAGES ****/
 /**** SLIDER TEST ****/
 .slide-0 {
@@ -298,6 +316,7 @@ Global elements
   font-size: 23px;
   color: #fff;
   text-align: center;
+  text-transform: uppercase;
 }
 .company-info-slider .slide.is-active {
   z-index: 1;
