@@ -27,6 +27,9 @@ li {
 a {
   text-decoration: none;
 }
+p {
+  margin: 0;
+}
 /* =============================================================================
 Global elements
 ========================================================================== */
@@ -78,9 +81,16 @@ Global elements
 .min-width {
   position: relative;
   height: 100%;
-  max-width: 1280px;
-  min-width: 1280px;
+  max-width: 980px;
+  min-width: 980px;
   margin: 0 auto;
+}
+.content {
+  position: relative;
+  height: 70%;
+  max-width: 980px;
+  min-width: 980px;
+  margin: 15% auto;
 }
 /**** ICONS ****/
 .icon {
@@ -168,14 +178,61 @@ Global elements
   font-size: 38px;
   color: #fff;
 }
-.icon-post {
-  display: inline-block;
-  margin: 0 auto;
+.slides-icons {
+  display: block;
   position: relative;
+  background-image: url("../images/sprite.png");
+}
+.slides-icons.icon-post {
+  margin: 30px auto 42px auto;
   width: 130px;
   height: 130px;
-  background-image: url("../images/sprite.png");
   background-position: -253px -16px;
+}
+.slides-icons.icon-tel {
+  margin: 30px auto 32px auto;
+  width: 84px;
+  height: 140px;
+  background-position: -415px -10px;
+}
+.slides-icons.icon-slide-1 {
+  margin: 30px auto 0 auto;
+  width: 271px;
+  height: 182px;
+  background-position: -5px -409px;
+}
+.slides-icons.icon-slide-2 {
+  margin: 30px auto 0 auto;
+  width: 288px;
+  height: 269px;
+  background-position: -334px -285px;
+}
+.slides-icons.icon-slide-3 {
+  margin: 30px auto 0 auto;
+  width: 164px;
+  height: 166px;
+  background-position: -635px 0px;
+}
+.slides-icons.icon-slide-4 {
+  float: left;
+}
+.slides-icons.icon-slide-4.left {
+  margin: 54px 0 0 221px;
+  width: 118px;
+  height: 109px;
+  background-position: -658px -326px;
+}
+.slides-icons.icon-slide-4.center {
+  margin: 38px 0 0 79px;
+  width: 144px;
+  height: 135px;
+  background-position: -643px -173px;
+}
+.slides-icons.icon-slide-4.right {
+  margin: 54px 0 0 79px;
+  width: 113px;
+  height: 110px;
+  background-position: -660px -445px;
 }
 /**** PAGES ****/
 /**** SLIDER TEST ****/
@@ -236,6 +293,12 @@ Global elements
   text-align: center;
   padding: 0;
 }
+.company-info-slider .slide p {
+  font-family: 'Reef-bold', sans-serif;
+  font-size: 23px;
+  color: #fff;
+  text-align: center;
+}
 .company-info-slider .slide.is-active {
   z-index: 1;
 }
@@ -292,7 +355,7 @@ Global elements
   top: 0;
   left: 0;
   width: 100%;
-  min-width: 1280px;
+  min-width: 980px;
   background: url("../images/bg-image.jpg") no-repeat center center;
   height: 641px;
   min-height: 641px;
@@ -305,22 +368,19 @@ Global elements
   position: relative;
   float: left;
   width: 184px;
-  top: 189px;
-  left: 267px;
-}
-.post p {
-  font-family: 'Reef-bold', sans-serif;
-  font-size: 23px;
-  color: #fff;
-  text-align: center;
+  margin: 0 0 0 288px;
 }
 .or {
   display: inline-block;
   position: relative;
-  top: 190px;
-  left: 470px;
+  margin: 0 0 0 22px;
   float: left;
   font-family: "Reef-bold", sans-serif;
   font-size: 23px;
   color: #fff;
+}
+.tel {
+  position: relative;
+  float: left;
+  margin: 0 0 0 32px;
 }

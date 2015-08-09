@@ -84,6 +84,8 @@ h1,h2,h3,h4,ul,li
 
 a
   text-decoration none
+p
+  margin 0
 
 /* =============================================================================
 Global elements
@@ -122,9 +124,15 @@ Global elements
 .min-width
   position relative
   height 100%
-  max-width 1280px
-  min-width 1280px
+  max-width 980px
+  min-width 980px
   margin 0 auto
+.content
+  position relative
+  height 70%
+  max-width 980px
+  min-width 980px
+  margin 15% auto
 
 /**** ICONS ****/
 .icon
@@ -163,14 +171,53 @@ Global elements
     font-family "Maxwell-bold","Times New Roman", sans-serif
     font-size 38px
     color #ffffff
-.icon-post
-  display inline-block
-  margin 0 auto
+.slides-icons
+  display block
   position relative
-  width 130px
-  height 130px
   background-image url("../images/sprite.png")
-  background-position -253px -16px
+  &.icon-post
+    margin 30px auto 42px auto
+    width 130px
+    height 130px
+    background-position -253px -16px
+  &.icon-tel
+    margin 30px auto 32px auto
+    width 84px
+    height 140px
+    background-position -415px -10px
+  &.icon-slide-1
+    margin 30px auto 0 auto
+    width 271px
+    height 182px
+    background-position -5px -409px
+  &.icon-slide-2
+    margin 30px auto 0 auto
+    width 288px
+    height 269px
+    background-position -334px -285px
+  &.icon-slide-3
+    margin 30px auto 0 auto
+    width 164px
+    height 166px
+    background-position -635px -0px
+  &.icon-slide-4
+    float left
+    &.left
+      margin 54px 0 0 221px
+      width 118px
+      height 109px
+      background-position -658px -326px
+    &.center
+      margin 38px 0 0 79px
+      width 144px
+      height 135px
+      background-position -643px -173px
+    &.right
+      margin 54px 0 0 79px
+      width 113px
+      height 110px
+      background-position -660px -445px
+
 
 /**** PAGES ****/
 /**** SLIDER TEST ****/
@@ -207,6 +254,11 @@ for num in (0..8)
       font-family sans-serif
       text-align center
       padding 0
+    p
+      font-family 'Reef-bold', sans-serif
+      font-size 23px
+      color #ffffff
+      text-align center
     &.is-active
       z-index 1
 
@@ -251,7 +303,7 @@ for num in (0..8)
   top 0
   left 0
   width 100%
-  min-width 1280px
+  min-width 980px
 
   background  url("../images/bg-image.jpg") no-repeat center center
   height 641px
@@ -262,22 +314,20 @@ for num in (0..8)
   position relative
   float left
   width 184px
-  top 189px
-  left 267px
-  p
-    font-family 'Reef-bold', sans-serif
-    font-size 23px
-    color #ffffff
-    text-align center
+  margin 0 0 0 288px
+
 .or
   display inline-block
   position relative
-  top 190px
-  left 470px
+  margin 0 0 0 22px
   float left
   font-family "Reef-bold",sans-serif;
   font-size 23px;
   color #FFF;
+.tel
+  position relative
+  float left
+  margin 0 0 0 32px
 
 
 
