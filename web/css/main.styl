@@ -1,10 +1,10 @@
 @import 'nib'
 
 /* VARIABLES */
-tdur        = 300ms
+tdur        = 300ms ease
 transition  = all tdur
 radius      = 6px
-spriteLink  = '../img/sprite.png'
+spriteLink  = '../images/sprite.png'
 
 /* FUNCTIONS */
 
@@ -138,43 +138,31 @@ Global elements
 .icon
   width 40px
   height 40px
-  background url(sprite) no-repeat
+  background url(spriteLink) no-repeat
   display inline-block
   margin 8px 0 0 50px
   &.icon-resoft-logo
-    visibility hidden
-
-
+    opacity 0
+    transition transition
     icon()
     &:before
     &:after
-      background url(../images/sprite.png) no-repeat 0 -120px
+      background url(spriteLink) no-repeat 0 -120px
     &:after
       background-position -40px -120px
-    &:visible
-      visibility visible
 .icon-logo-big
   position relative
-  width 95px
-  height 95px
-  float left
-  background-image url("../images/sprite.png")
-  background-position -13px -13px
-  margin 58px 0 0 52px
+  width 120px
+  height 120px
+  background-image url(spriteLink)
+  background-position 0 0
+  display block
   &:hover
-    background-position -131px -13px
-  span
-    display inline-block
-    width 95px
-    text-align center
-    margin-top 95px
-    font-family "Maxwell-bold","Times New Roman", sans-serif
-    font-size 38px
-    color #ffffff
+    background-position -120px 0
 .slides-icons
   display block
   position relative
-  background-image url("../images/sprite.png")
+  background-image url(spriteLink)
   &.icon-post
     margin 30px auto 42px auto
     width 130px
@@ -234,8 +222,7 @@ Global elements
     background-position -646px -570px
 .icon-service
   display block
-  position relative
-  background-image url("../images/sprite.png")
+  background-image url(spriteLink)
   margin 0 auto
   &.create-design
     width 131px
@@ -309,8 +296,6 @@ for num in (0..8)
   float right
   position relative
   margin 0 40px 0 0
-
-
   li
     float left
     margin 16px 0 0 40px
@@ -318,7 +303,7 @@ for num in (0..8)
     font-family 'Reef-bold', sans-serif
     font-size 28px
     color #ffffff
-    line-height :28px
+    line-height 28px
     transition 0.3s
     &:hover
       color #f1635a
@@ -330,12 +315,20 @@ for num in (0..8)
   left 0
   width 100%
   min-width 980px
-
   background  url("../images/bg-image.jpg") no-repeat center center
   height 641px
-  min-height 641px
-  max-height 641px
   background-size cover
+  .logo
+    padding 58px 0 0 52px
+    text-align center
+    .icon-logo-big
+      margin-bottom -10px
+    span
+      display block
+      text-align center
+      font-family "Maxwell-bold","Times New Roman", sans-serif
+      font-size 38px
+      color #ffffff
 .post
   position relative
   float left
@@ -358,18 +351,26 @@ for num in (0..8)
   li
     float left
     margin-right 110px
+    .image-holder
+      height 150px
+      position relative
+      .icon-service
+        position absolute
+        top -500px
+        left -500px
+        right -500px
+        bottom -500px
+        margin auto
     &:first-child
       margin-left 9px
       margin-right 110px
     &:last-child
       padding 0
       margin 0
-
   h3
     font-size 28px
     font-family "Reef-bold", sans-serif
     text-align center
-
   .text-services
     display inline-block
     position relative

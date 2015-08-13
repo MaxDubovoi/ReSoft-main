@@ -56,8 +56,8 @@ Global elements
 .visible {
   visibility: visible !important;
   opacity: 1 !important;
-  -ms-filter: none;
-  filter: none;
+  -ms-filter: none !important;
+  filter: none !important;
 }
 .clear {
   clear: both;
@@ -96,12 +96,15 @@ Global elements
 .icon {
   width: 40px;
   height: 40px;
-  background: url("sprite") no-repeat;
+  background: url("../images/sprite.png") no-repeat;
   display: inline-block;
   margin: 8px 0 0 50px;
 }
 .icon.icon-resoft-logo {
-  visibility: hidden;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  transition: all 300ms ease;
   background-image: none !important;
   position: relative;
 }
@@ -116,7 +119,7 @@ Global elements
   opacity: 1;
   -ms-filter: none;
   filter: none;
-  transition: all 300ms;
+  transition: all 300ms ease;
 }
 .no-opacity .icon.icon-resoft-logo:before,
 .no-opacity .icon.icon-resoft-logo:after {
@@ -154,29 +157,16 @@ Global elements
 .icon.icon-resoft-logo:after {
   background-position: -40px -120px;
 }
-.icon.icon-resoft-logo:visible {
-  visibility: visible;
-}
 .icon-logo-big {
   position: relative;
-  width: 95px;
-  height: 95px;
-  float: left;
+  width: 120px;
+  height: 120px;
   background-image: url("../images/sprite.png");
-  background-position: -13px -13px;
-  margin: 58px 0 0 52px;
+  background-position: 0 0;
+  display: block;
 }
 .icon-logo-big:hover {
-  background-position: -131px -13px;
-}
-.icon-logo-big span {
-  display: inline-block;
-  width: 95px;
-  text-align: center;
-  margin-top: 95px;
-  font-family: "Maxwell-bold", "Times New Roman", sans-serif;
-  font-size: 38px;
-  color: #fff;
+  background-position: -120px 0;
 }
 .slides-icons {
   display: block;
@@ -254,7 +244,6 @@ Global elements
 }
 .icon-service {
   display: block;
-  position: relative;
   background-image: url("../images/sprite.png");
   margin: 0 auto;
 }
@@ -391,11 +380,23 @@ Global elements
   min-width: 980px;
   background: url("../images/bg-image.jpg") no-repeat center center;
   height: 641px;
-  min-height: 641px;
-  max-height: 641px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
+}
+.bg-picture .logo {
+  padding: 58px 0 0 52px;
+  text-align: center;
+}
+.bg-picture .logo .icon-logo-big {
+  margin-bottom: -10px;
+}
+.bg-picture .logo span {
+  display: block;
+  text-align: center;
+  font-family: "Maxwell-bold", "Times New Roman", sans-serif;
+  font-size: 38px;
+  color: #fff;
 }
 .post {
   position: relative;
@@ -420,6 +421,18 @@ Global elements
 .services li {
   float: left;
   margin-right: 110px;
+}
+.services li .image-holder {
+  height: 150px;
+  position: relative;
+}
+.services li .image-holder .icon-service {
+  position: absolute;
+  top: -500px;
+  left: -500px;
+  right: -500px;
+  bottom: -500px;
+  margin: auto;
 }
 .services li:first-child {
   margin-left: 9px;

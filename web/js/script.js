@@ -244,35 +244,17 @@ var initCompanyInfoSlider = function () {
 
 };
 var scrollViaMenu = function(){
+    var nav = $(".navigation");
+    var navLink = $(nav).find('a');
+    var sliderHolderTop = sliderHolder.offset().top;
+    var slideHeight = $('.slide').height();
 
-    $(".navigation").on("click","a", function (event) {
-
-        //отменяем стандартную обработку нажатия по ссылке
-
-        event.preventDefault();
-        var currentSlide;
-        var position;
-        var i;
-
-        var id  = $(this).attr('href');
-        for(i=0;i<slidesNum;i++)
-        {
-            console.log('id='+slides.eq(i).attr('id'));
-            console.log('this href='+id);
-
-            if(slides.eq(i).attr('id') ==id)
-            {   currentSlide = i;
-                console.log('проверка');
-                break;
-            }
-        }
-
-        console.log('currentSlide='+currentSlide);
-
-        //узнаем высоту от начала страницы до блока на который ссылается якорь
-        position = sliderHolder.offset().top+ +(windowHeight*currentSlide);
-        //анимируем переход на расстояние - top за 1500 мс
-        $('body,html').animate({scrollTop: position+'px'}, 1500);
+    navLink.on("click", function (e) {
+        e.preventDefault();
+        var elem = $(this);
+        var dataScrollTo = elem.attr('data-scroll-to-slide');
+        var topScrollDistance = slideHeight * (dataScrollTo - 1) + +sliderHolderTop;
+        body.animate({scrollTop: topScrollDistance}, 1500);
     });
 };
 
