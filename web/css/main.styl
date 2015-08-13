@@ -232,6 +232,23 @@ Global elements
     width 142px
     height 140px
     background-position -646px -570px
+.icon-service
+  display block
+  position relative
+  background-image url("../images/sprite.png")
+  margin 0 auto
+  &.create-design
+    width 131px
+    height 133px
+    background-position -173px -174px
+  &.technical-support
+    width 97px
+    height 115px
+    background-position -529px -0px
+  &.create-web
+    width 121px
+    height 119px
+    background-position -436px -162px
 
 /**** PAGES ****/
 /**** SLIDER TEST ****/
@@ -263,11 +280,6 @@ for num in (0..8)
     bottom 0
     height 0
     overflow hidden
-    h3
-      font-size 70px
-      font-family sans-serif
-      text-align center
-      padding 0
     p
       font-family 'Reef-bold', sans-serif
       font-size 23px
@@ -278,10 +290,9 @@ for num in (0..8)
       z-index 1
 
 .footer-block
-  height 1000px
+  height 128px
   width 100%
-  background yellowgreen
-  border-bottom 5px solid #000000
+  background #f1635a
   /*h2
     font-size 80px
     text-align center
@@ -343,6 +354,31 @@ for num in (0..8)
   position relative
   float left
   margin 0 0 0 32px
+.services
+  li
+    float left
+    margin-right 110px
+    &:first-child
+      margin-left 9px
+      margin-right 110px
+    &:last-child
+      padding 0
+      margin 0
+
+  h3
+    font-size 28px
+    font-family "Reef-bold", sans-serif
+    text-align center
+
+  .text-services
+    display inline-block
+    position relative
+    bottom 0
+    font-size 23px
+    font-family "Reef-bold", sans-serif
+    color #000
+    vertical-align bottom
+
 
 
 

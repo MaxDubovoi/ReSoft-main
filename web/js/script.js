@@ -74,13 +74,14 @@ var windowHeight = $(window).height();
 var windowWidth = $(window).width();
 var slides = $(sliderHolder.find('.slide'));
 var activeSlideIndex = 0;
+var slidesNum = $(sliderHolder.find('.slide')).length;
 
 var initCompanyInfoSlider = function () {
 
     var footerBlock = $('.footer-block');
 
 
-    var slidesNum = $(sliderHolder.find('.slide')).length;
+
 
     var headerBlockHeight = $('.bg-picture').height();
     console.log(headerBlockHeight);
@@ -105,7 +106,7 @@ var initCompanyInfoSlider = function () {
     }).addClass('is-active');
     var beforeScroll=0, afterScroll;
     footerBlock.css({
-        top: windowHeight*(slidesNum-1) + headerBlockHeight,
+        top: windowHeight*(slidesNum) + headerBlockHeight,
         position: 'relative'
 
 
@@ -131,9 +132,9 @@ var initCompanyInfoSlider = function () {
         var _top = $(window).scrollTop();
         afterScroll=_top;
         windowHeight = $(window).height();
-        body.css({
-            height: (windowHeight*(slidesNum)) + headerBlockHeight + footerBlock.height()
-        });
+       /* body.css({
+            height: (windowHeight*(slidesNum-1)) + headerBlockHeight + footerBlock.height()
+        });*/
 
         if (_top >= headerBlockHeight ){
             iconLogo.addClass('visible');
@@ -174,7 +175,7 @@ var initCompanyInfoSlider = function () {
             */
            sliderHolder.removeClass('fixed').addClass('rel').css({
 
-               top: (headerBlockHeight+windowHeight*(slidesNum-2))
+               top: (headerBlockHeight+windowHeight*(slidesNum-1))
 
             });
         }
@@ -200,12 +201,13 @@ var initCompanyInfoSlider = function () {
 
             height: 0
         });
-        footerBlock.css({
-            top: windowHeight*(slidesNum-1) + headerBlockHeight,
+       /* footerBlock.css({
+            //top: windowHeight*(slidesNum-1) + headerBlockHeight,
+            top: body.height() - footerBlock.height(),
             position: 'relative'
 
 
-        });
+        });*/
         $(window).resize(function(){
             console.log('resize');
             headerBlockHeight = $('.bg-picture').height();
@@ -241,6 +243,38 @@ var initCompanyInfoSlider = function () {
     $(window).bind('mousewheel DOMMouseScroll', scrollHandler).bind('scroll', scrollHandler);
 
 };
+var scrollViaMenu = function(){
+
+    $(".navigation").on("click","a", function (event) {
+
+        //отменяем стандартную обработку нажатия по ссылке
+
+        event.preventDefault();
+        var currentSlide;
+        var position;
+        var i;
+
+        var id  = $(this).attr('href');
+        for(i=0;i<slidesNum;i++)
+        {
+            console.log('id='+slides.eq(i).attr('id'));
+            console.log('this href='+id);
+
+            if(slides.eq(i).attr('id') ==id)
+            {   currentSlide = i;
+                console.log('проверка');
+                break;
+            }
+        }
+
+        console.log('currentSlide='+currentSlide);
+
+        //узнаем высоту от начала страницы до блока на который ссылается якорь
+        position = sliderHolder.offset().top+ +(windowHeight*currentSlide);
+        //анимируем переход на расстояние - top за 1500 мс
+        $('body,html').animate({scrollTop: position+'px'}, 1500);
+    });
+};
 
 $(window).load(function(){
     $('html, body').scrollTop(0);
@@ -248,6 +282,7 @@ $(window).load(function(){
 
 $(document).ready(function(){
     initCompanyInfoSlider();
+    scrollViaMenu();
 });
 
 

@@ -252,6 +252,27 @@ Global elements
   height: 140px;
   background-position: -646px -570px;
 }
+.icon-service {
+  display: block;
+  position: relative;
+  background-image: url("../images/sprite.png");
+  margin: 0 auto;
+}
+.icon-service.create-design {
+  width: 131px;
+  height: 133px;
+  background-position: -173px -174px;
+}
+.icon-service.technical-support {
+  width: 97px;
+  height: 115px;
+  background-position: -529px 0px;
+}
+.icon-service.create-web {
+  width: 121px;
+  height: 119px;
+  background-position: -436px -162px;
+}
 /**** PAGES ****/
 /**** SLIDER TEST ****/
 .slide-0 {
@@ -305,12 +326,6 @@ Global elements
   height: 0;
   overflow: hidden;
 }
-.company-info-slider .slide h3 {
-  font-size: 70px;
-  font-family: sans-serif;
-  text-align: center;
-  padding: 0;
-}
 .company-info-slider .slide p {
   font-family: 'Reef-bold', sans-serif;
   font-size: 23px;
@@ -322,10 +337,9 @@ Global elements
   z-index: 1;
 }
 .footer-block {
-  height: 1000px;
+  height: 128px;
   width: 100%;
-  background: #9acd32;
-  border-bottom: 5px solid #000;
+  background: #f1635a;
 /*h2
     font-size 80px
     text-align center
@@ -402,4 +416,30 @@ Global elements
   position: relative;
   float: left;
   margin: 0 0 0 32px;
+}
+.services li {
+  float: left;
+  margin-right: 110px;
+}
+.services li:first-child {
+  margin-left: 9px;
+  margin-right: 110px;
+}
+.services li:last-child {
+  padding: 0;
+  margin: 0;
+}
+.services h3 {
+  font-size: 28px;
+  font-family: "Reef-bold", sans-serif;
+  text-align: center;
+}
+.services .text-services {
+  display: inline-block;
+  position: relative;
+  bottom: 0;
+  font-size: 23px;
+  font-family: "Reef-bold", sans-serif;
+  color: #000;
+  vertical-align: bottom;
 }
