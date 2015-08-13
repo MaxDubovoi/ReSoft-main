@@ -56,8 +56,8 @@ Global elements
 .visible {
   visibility: visible !important;
   opacity: 1 !important;
-  -ms-filter: none !important;
-  filter: none !important;
+  -ms-filter: none;
+  filter: none;
 }
 .clear {
   clear: both;
@@ -261,6 +261,28 @@ Global elements
   width: 121px;
   height: 119px;
   background-position: -436px -162px;
+}
+.icon-social {
+  float: left;
+  background-image: url("../images/sprite.png");
+  width: 79px;
+  height: 80px;
+}
+.icon-social.skype {
+  background-position: 0 -240px;
+}
+.icon-social.skype:hover {
+  background-position: -79px -240px;
+}
+/*&.facebook
+      background-position 0 -160px
+  &:hover
+      background-position -79px -240px*/
+.twitter {
+  background-position: 0 -320px;
+}
+.twitter:hover {
+  background-position: -80px -320px;
 }
 /**** PAGES ****/
 /**** SLIDER TEST ****/
