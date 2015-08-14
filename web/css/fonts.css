@@ -1,8 +1,21 @@
 @font-face {
     font-family: Reef-bold;
     src: url(../fonts/Reef.otf);
+    src: url('../fonts/Reef.eot');
+    src: url('../fonts/Reef.eot') format('embedded-opentype'),
+    url('../fonts/Reef.woff2') format('woff2'),
+    url('../fonts/Reef.woff') format('woff'),
+    url('../fonts/Reef.ttf') format('truetype'),
+    url('../fonts/Reef.svg#Reef') format('svg');
 }
-@font-face{
+
+@font-face {
     font-family: Maxwell-bold;
     src: url(../fonts/MAXWELL+BOLD.ttf);
+    src: url('../fonts/MAXWELL_BOLD.eot');
+    src: url('../fonts/MAXWELL_BOLD.eot') format('embedded-opentype'),
+    url('../fonts/MAXWELL_BOLD.woff2') format('woff2'),
+    url('../fonts/MAXWELL_BOLD.woff') format('woff'),
+    url('../fonts/MAXWELL_BOLD.ttf') format('truetype'),
+    url('../fonts/MAXWELL_BOLD.svg#MAXWELL_BOLD') format('svg');
 }

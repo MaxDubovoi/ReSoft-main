@@ -75,6 +75,7 @@ var windowWidth = $(window).width();
 var slides = $(sliderHolder.find('.slide'));
 var activeSlideIndex = 0;
 var slidesNum = $(sliderHolder.find('.slide')).length;
+var wrap = $('.main');
 
 var initCompanyInfoSlider = function () {
 
@@ -88,11 +89,13 @@ var initCompanyInfoSlider = function () {
 
 
     var sliderHolderTop = sliderHolder.offset().top;
+    sliderHolder.removeClass('rel').css({
+        top: 0
+    });
 
     body.css({
         height: (windowHeight*(slidesNum)) + +headerBlockHeight + +footerBlock.height()
     });
-
 
 
     slides.css({
@@ -154,14 +157,6 @@ var initCompanyInfoSlider = function () {
 
                 height: _top - headerBlockHeight - (windowHeight * activeSlideIndex+1)
             });
-             if (_top+windowHeight>=footerBlock.offset().top)
-            {
-                console.log('enter to scroll');
-                sliderHolder.removeClass('fixed').addClass('rel').css({
-
-                    top: (headerBlockHeight+ +windowHeight*(slidesNum-1))
-                });
-            }
            if (_top >= windowHeight * activeSlideIndex + +headerBlockHeight && _top <= (windowHeight * (activeSlideIndex + +1)) + +headerBlockHeight)
            {
 
@@ -178,10 +173,32 @@ var initCompanyInfoSlider = function () {
             sliderHolder.removeClass('fixed');
             beforeScroll=afterScroll;
         }
+        if (_top+windowHeight>=footerBlock.offset().top)
+        {
+            console.log('enter to scroll = '+_top);
+            sliderHolder.removeClass('fixed').addClass('rel').css({
+
+                top: (headerBlockHeight+ +windowHeight*(slidesNum-1))
+            });
+            if(delta<0)
+            {
+                var slideHeight = $('.slide').height();
+                var topScrollDistance = slideHeight * (slidesNum-1) + +sliderHolderTop;
+                body.scrollTop(topScrollDistance);
+                //body.animate({scrollTop: topScrollDistance}, 1500);
+            }
+            if(delta>0)
+            {
+
+                           }
+        }
         if(_top<=headerBlockHeight)
-        slides.eq(activeSlideIndex+1).css({
-            height: 0
-        });
+        {
+            slides.eq(activeSlideIndex+1).css({
+                height: 0
+            });
+        }
+
         $(window).resize(function(){
             headerBlockHeight = $('.bg-picture').height();
             windowHeight = $(window).height();
