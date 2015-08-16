@@ -99,7 +99,7 @@ Global elements
   height: 40px;
   background: url("../images/sprite.png") no-repeat;
   display: inline-block;
-  margin: 8px 0 0 50px;
+  margin: 8px 0 0 11px;
 }
 .icon.icon-resoft-logo {
   opacity: 0;
@@ -267,14 +267,14 @@ Global elements
   float: right;
   margin: 10px 44px 0 0;
   background-image: url("../images/sprite.png");
-  width: 79px;
+  width: 80px;
   height: 80px;
 }
 .icon-social.skype {
-  background-position: 0 -240px;
+  background-position: 2px -240px;
 }
 .icon-social.skype:hover {
-  background-position: -79px -240px;
+  background-position: -80px -240px;
 }
 .icon-social.facebook {
   background-position: 0 -160px;
@@ -411,7 +411,7 @@ Global elements
   background-size: cover;
 }
 .bg-picture .logo {
-  padding: 58px 0 0 52px;
+  padding: 58px 0 0 11px;
   text-align: center;
 }
 .bg-picture .logo .icon-logo-big {
@@ -476,7 +476,6 @@ Global elements
 .services h3 {
   font-size: 28px;
   font-family: "Reef-bold", sans-serif;
-  text-align: center;
 }
 .services .text-services {
   display: inline-block;

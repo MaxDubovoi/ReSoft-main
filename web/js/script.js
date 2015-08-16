@@ -68,6 +68,7 @@ BrowserDetect.init();
 //
 //}
 var sliderHolder = $('.company-info-slider-holder');
+var sliderHolderTop = sliderHolder.offset().top;
 var iconLogo=$('.icon-resoft-logo');
 var slider = $('.company-info-slider');
 var windowHeight = $(window).height();
@@ -76,19 +77,15 @@ var slides = $(sliderHolder.find('.slide'));
 var activeSlideIndex = 0;
 var slidesNum = $(sliderHolder.find('.slide')).length;
 var wrap = $('.main');
+var footerAnimation=false;// fix scroll footer in FF
+var delta = 0;
+var slideHeight = $('.slide').height();
 
 var initCompanyInfoSlider = function () {
 
     var footerBlock = $('.footer-block');
-
-
-
-
     var headerBlockHeight = $('.bg-picture').height();
     console.log(headerBlockHeight);
-
-
-    var sliderHolderTop = sliderHolder.offset().top;
     sliderHolder.removeClass('rel').css({
         top: 0
     });
@@ -117,7 +114,6 @@ var initCompanyInfoSlider = function () {
 
 
     var scrollHandler = function (e) {
-        var delta = 0;
 
         if (typeof e.originalEvent.deltaY != "undefined") {
             // regular browsers
@@ -180,17 +176,23 @@ var initCompanyInfoSlider = function () {
 
                 top: (headerBlockHeight+ +windowHeight*(slidesNum-1))
             });
-            if(delta<0)
+            if(BrowserDetect.browser=='Firefox')
+            {
+                scrollFooterFirefox();//scroll footer fix for FF
+            }
+
+/*
+            if(delta<0&&BrowserDetect.browser=='Firefox' )
             {
                 var slideHeight = $('.slide').height();
-                var topScrollDistance = slideHeight * (slidesNum-1) + +sliderHolderTop;
-                body.scrollTop(topScrollDistance);
-                //body.animate({scrollTop: topScrollDistance}, 1500);
+                var topScrollDistance =slideHeight  * (slidesNum-1) + +sliderHolderTop;
+                body.animate({scrollTop: topScrollDistance}, 1000);
             }
-            if(delta>0)
+            if(delta>0&&BrowserDetect.browser=='Firefox')
             {
-
-                           }
+                body.animate({scrollTop: body.height()}, 1000);
+            }
+            */
         }
         if(_top<=headerBlockHeight)
         {
@@ -200,6 +202,7 @@ var initCompanyInfoSlider = function () {
         }
 
         $(window).resize(function(){
+            slideHeight = $('.slide').height();
             headerBlockHeight = $('.bg-picture').height();
             windowHeight = $(window).height();
             slides.css({
@@ -222,7 +225,7 @@ var initCompanyInfoSlider = function () {
 var scrollViaMenu = function(){
     var nav = $(".navigation");
     var navLink = $(nav).find('a');
-    var sliderHolderTop = sliderHolder.offset().top;
+    var sliderHolderTop=sliderHolder.offset().top;
     var slideHeight = $('.slide').height();
 
     navLink.on("click", function (e) {
@@ -232,6 +235,31 @@ var scrollViaMenu = function(){
         var topScrollDistance = slideHeight * (dataScrollTo - 1) + +sliderHolderTop;
         body.animate({scrollTop: topScrollDistance}, 1500);
     });
+};
+var scrollFooterFirefox = function(){
+    if(footerAnimation)
+    {
+        footerAnimation=false;
+        return 0;
+    }
+    else
+    {
+        if(delta<0)
+        {
+            var slideHeight = $('.slide').height();
+            var topScrollDistance =slideHeight  * (slidesNum-1) + +sliderHolderTop;
+            body.animate({scrollTop: topScrollDistance},100);
+            footerAnimation=true;
+            return 0;
+        }
+        else if(delta>0)
+        {
+            body.animate({scrollTop: body.height()}, 100);
+            footerAnimation=true;
+            return 0;
+        }
+    }
+
 };
 
 $(window).load(function(){
