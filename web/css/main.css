@@ -81,7 +81,7 @@ Global elements
 .min-width {
   position: relative;
   height: 100%;
-  max-width: 980px;
+  width: 980px;
   min-width: 980px;
   margin: 0 auto;
 }
@@ -89,7 +89,7 @@ Global elements
   position: relative;
   overflow: hidden;
   height: 70%;
-  max-width: 980px;
+  width: 980px;
   min-width: 980px;
   margin: 15% auto;
 }
@@ -333,6 +333,7 @@ Global elements
   position: relative;
 }
 .company-info-slider .slide {
+  width: 100%;
   position: absolute;
   margin: 0 auto;
   top: 0;

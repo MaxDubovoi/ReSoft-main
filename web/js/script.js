@@ -201,23 +201,7 @@ var initCompanyInfoSlider = function () {
             });
         }
 
-        $(window).resize(function(){
-            slideHeight = $('.slide').height();
-            headerBlockHeight = $('.bg-picture').height();
-            windowHeight = $(window).height();
-            slides.css({
-                width: $(window).width()
-            });
-            slides.eq(activeSlideIndex+1).css({
-                height: _top - headerBlockHeight - (windowHeight * activeSlideIndex+1)
-            });
-            for(var i=0;i<=activeSlideIndex;i++)
-            {
-                slides.eq(i).css({
-                    height: windowHeight
-                })
-            }
-        });
+
     };
     $(window).bind('mousewheel DOMMouseScroll', scrollHandler).bind('scroll', scrollHandler);
 
@@ -236,6 +220,8 @@ var scrollViaMenu = function(){
         body.animate({scrollTop: topScrollDistance}, 1500);
     });
 };
+
+
 var scrollFooterFirefox = function(){
     if(footerAnimation)
     {
@@ -261,15 +247,55 @@ var scrollFooterFirefox = function(){
     }
 
 };
+var contentResize = function() {
 
-$(window).load(function(){
+    var _top = $(window).scrollTop();
+    var headerBlockHeight = $('.bg-picture').height();
+    var footerBlock = $('.footer-block');
+    slideHeight = $('.slide').height();
+    windowWidth = $(window).width();
+    console.log(windowWidth);
+    windowHeight = $(window).height();
+    if ((windowWidth) < 980) {
+        windowWidth=980;
+        footerBlock.css({
+            width: windowWidth
+        });
+
+    }
+    else
+    {
+        footerBlock.css({
+            width: 100+'%'
+        });
+    }
+    slides.css({
+        width: windowWidth
+    });
+    slides.eq(activeSlideIndex + 1).css({
+        height: _top - headerBlockHeight - (windowHeight * activeSlideIndex + 1)
+    });
+    for (var i = 0; i <= activeSlideIndex; i++) {
+        slides.eq(i).css({
+            height: windowHeight
+        })
+    }
+};
+    $(window).resize(function() {
+        contentResize();
+
+
+    });
+    $(window).load(function(){
     $('html, body').scrollTop(0);
     initCompanyInfoSlider();
+        contentResize();
 });
 
 $(document).ready(function(){
     initCompanyInfoSlider();
     scrollViaMenu();
+    contentResize();
 });
 
 
